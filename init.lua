@@ -1,3 +1,8 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+vim.opt.termguicolors = true
+
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.expandtab = true
@@ -32,7 +37,8 @@ vim.pack.add({
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
     { src = "https://github.com/rktjmp/lush.nvim" },
-    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    -- { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/nvim-tree/nvim-tree.lua" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/saghen/blink.cmp" },
 })
@@ -44,11 +50,13 @@ vim.pack.add({
 --
 vim.diagnostic.config({ virtual_text = false })
 require "tiny-inline-diagnostic".setup({
-    preset = "amongus",
+    preset = "nonerdfont",
     signs = {
         arrow = ""
     }
 })
+
+require "nvim-tree".setup()
 
 
 -- um
@@ -100,14 +108,14 @@ require "lualine".setup {
     padding_top = 2,
 }
 
-require "Telescope".setup {
-    defaults = {
-        file_ignore_patterns = {
-            "build/",
-            "bin/"
-        },
-    }
-}
+-- require "Telescope".setup {
+--     defaults = {
+--         file_ignore_patterns = {
+--             "build/",
+--             "bin/"
+--         },
+--     }
+-- }
 
 
 -- enable lsp
@@ -117,7 +125,9 @@ vim.lsp.enable({ "lua_ls", "gopls", "clangd", "superhtml", "jdtls" })
 vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format)
 
-vim.keymap.set('n', '<leader>p', ':Telescope find_files<cr>')
+-- vim.keymap.set('n', '<leader>p', ':Telescope find_files<cr>')
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>b', ':NvimTreeFindFile<cr>')
 
 vim.keymap.set('n', '<leader>wt', ':terminal scp -P 21098 % wildlezz@server177.web-hosting.com:public_html/<cr><cr>')
 
