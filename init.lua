@@ -31,7 +31,8 @@ vim.pack.add({
     -- { src = "https://github.com/rose-pine/neovim" },
     -- { src = "https://github.com/ellisonleao/gruvbox.nvim"},
     -- { src = "https://github.com/sainnhe/gruvbox-material"},
-    { src = "https://github.com/morhetz/gruvbox"},
+    -- { src = "https://github.com/morhetz/gruvbox"},
+    { src = "https://github.com/folke/tokyonight.nvim"},
 
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
@@ -80,7 +81,7 @@ require('blink.cmp').setup({
 require "lualine".setup {
     options = {
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
     },
     always_show_tabline = true,
     sections = {
@@ -149,7 +150,7 @@ vim.keymap.set('n', '<leader>j', '<C-w>j')
 -- colorscheme
 --
 -- pick your colorscheme
-local scheme = "gruvbox"
+local scheme = "tokyonight-night"
 
 -- require(scheme).setup({
 --   disable_background = true,
